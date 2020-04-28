@@ -27,4 +27,14 @@ class User extends Model
     protected $hidden = [
         'token', 'refresh_token',
     ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'user' => 'array',
+        'access_token_response_body' => 'array',
+    ];
 }
