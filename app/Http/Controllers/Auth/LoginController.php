@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
@@ -25,10 +26,25 @@ class LoginController extends Controller
      *
      * @return JsonResponse
      */
-    public function handleProviderCallback()
+    public function handleProviderCallback(Request $request)
     {
-        $user = Socialite::driver('twitch')->user();
+        $twitchUser = Socialite::driver('twitch')->user();
 
-        return response()->json($user);
+        $user = User::updateOrCreate(['user_id' => $twitchUser->getId()], [
+            'user_id' => $twitchUser->getId(),
+            'nickname' => $twitchUser->getNickname(),
+            'name' => $twitchUser->getName(),
+            'email' => $twitchUser->getEmail(),
+            'token' => $twitchUser->token,
+            'refresh_token' => $twitchUser->refreshToken,
+            'expires_in' => $twitchUser->expiresIn,
+            'avatar' => $twitchUser->getAvatar(),
+            'user' => $twitchUser->user,
+            'access_token_response_body' => $twitchUser->accessTokenResponseBody,
+        ]);
+
+        $request->session()->put('ttv_user', $user);
+
+        return redirect()->route('dashboard.index');
     }
 }
