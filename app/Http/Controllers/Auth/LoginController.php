@@ -17,7 +17,7 @@ class LoginController extends Controller
      */
     public function redirectToProvider()
     {
-        return Socialite::driver('Twitch')->redirect();
+        return Socialite::driver('twitch')->redirect();
     }
 
     /**
@@ -27,7 +27,7 @@ class LoginController extends Controller
      */
     public function handleProviderCallback()
     {
-        $user = Socialite::driver('Twitch')->user();
+        $user = Socialite::driver('twitch')->user();
 
         return response()->json($user);
     }
