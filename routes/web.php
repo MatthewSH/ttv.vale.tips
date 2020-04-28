@@ -15,7 +15,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('login');
 
-Route::get('login', 'Auth\LoginController@redirectToProvider');
-Route::get('login/callback', 'Auth\LoginController@handleProviderCallback');
+Route::get('login', 'Auth\LoginController@redirectToProvider')->name('login.twitch');
+Route::get('login/callback', 'Auth\LoginController@handleProviderCallback')->name('login.twitch.callback');
+
+Route::get('dashboard', function() {
+
+})->name('dashboard.index');
