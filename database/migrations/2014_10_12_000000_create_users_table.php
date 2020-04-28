@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('user_id')->unique();
             $table->string('nickname');
             $table->string('name');
-            $table->email('email')->unique();
+            $table->string('email')->unique();
             $table->string('token');
             $table->string('refresh_token');
             $table->string('expires_in');
