@@ -16,7 +16,7 @@ class User extends Model
         'user_id', 'nickname', 'name',
         'email', 'token', 'refresh_token',
         'expires_in', 'avatar', 'user',
-        'access_token_response_body'
+        'access_token_response_body', 'is_author'
     ];
 
     /**
@@ -36,5 +36,6 @@ class User extends Model
     protected $casts = [
         'user' => 'array',
         'access_token_response_body' => 'array',
+        'is_author' => 'boolean',
     ];
 }
