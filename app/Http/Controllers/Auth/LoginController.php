@@ -47,4 +47,10 @@ class LoginController extends Controller
 
         return redirect()->route('dashboard.index');
     }
+
+    public function logout(Request $request) {
+        $request->session()->remove('ttv_user');
+
+        return redirect()->route('login');
+    }
 }
