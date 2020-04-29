@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('refresh_token');
             $table->string('expires_in');
             $table->string('avatar');
-            $table->boolean('is_author');
+            $table->boolean('is_author')->default(false);
             $table->json('user');
             $table->json('access_token_response_body');
             $table->timestamps();
