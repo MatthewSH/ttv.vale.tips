@@ -5,6 +5,7 @@
     <title>{{ (isset($pageTitle) ? $pageTitle . ' / ' : '') . config('app.name', 'Laravel') }}</title>
     <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
     <script src="{{ mix('/js/app.js') }}"></script>
+    <script src="https://kit.fontawesome.com/f3e891ea97.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <x-navbar />
