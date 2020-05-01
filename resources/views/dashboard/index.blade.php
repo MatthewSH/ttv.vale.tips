@@ -1,5 +1,8 @@
+@inject('user', 'App\Services\TwitchUser')
 @extends('layouts.dashboard')
 
 @section('content')
-    <h1>grdgfsgfrd</h1>
+    <p>
+        Welcome, {{ $user->getName() }}
+    </p>
 @endsection
