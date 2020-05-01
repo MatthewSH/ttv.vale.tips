@@ -21,10 +21,9 @@ Route::get('login', 'Auth\LoginController@redirectToProvider')->name('login.twit
 Route::get('login/callback', 'Auth\LoginController@handleProviderCallback')->name('login.twitch.callback');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
-Route::group([
-    'prefix' => 'dash',
-    'middleware' => ['auth', 'auth.author'],
-    'name' => 'dashboard.'
-], function () {
+Route::name('dashboard.')->namespace('Dashboard')->prefix('dash')->middleware(['auth', 'auth.author'])->group(function () {
     Route::get('/', 'DashboardController@index')->name('index');
+    Route::get('categories', function () {
+        return 'lol';
+    })->name('categories');
 });
