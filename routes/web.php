@@ -23,7 +23,5 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::name('dashboard.')->namespace('Dashboard')->prefix('dash')->middleware(['auth', 'auth.author'])->group(function () {
     Route::get('/', 'DashboardController@index')->name('index');
-    Route::get('categories', function () {
-        return 'lol';
-    })->name('categories');
+    Route::resource('categories', 'CategoryController');
 });
