@@ -7,7 +7,7 @@
     <script src="{{ mix('/js/app.js') }}"></script>
     <script src="https://kit.fontawesome.com/f3e891ea97.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body class="bg-gray-300 min-h-screen">
     <x-navbar />
     <div class="container mx-auto pt-4">
         @yield('content')
