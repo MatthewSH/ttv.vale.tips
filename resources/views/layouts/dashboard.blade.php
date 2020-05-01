@@ -7,6 +7,7 @@
     <script src="{{ mix('/js/app.js') }}"></script>
 </head>
 <body>
+    <x-navbar />
     <div class="container mx-auto pt-4">
         @yield('content')
     </div>
