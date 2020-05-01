@@ -9,7 +9,7 @@
 </head>
 <body class="bg-gray-300 min-h-screen">
     <x-navbar />
-    <div class="container mx-auto pt-4">
+    <div class="container mx-auto pt-8">
         @yield('content')
     </div>
 </body>
