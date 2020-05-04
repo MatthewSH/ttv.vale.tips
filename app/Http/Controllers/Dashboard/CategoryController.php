@@ -39,7 +39,11 @@ class CategoryController extends Controller
      */
     public function store(CreateCategory $request)
     {
-        //
+        $category = app('rinvex.categories.category')->create([
+            'name' => $request->get('name')
+        ]);
+
+        return redirect()->route('dashboard.categories.show', ['category' => $category->id]);
     }
 
     /**
@@ -50,7 +54,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        return $category;
     }
 
     /**
