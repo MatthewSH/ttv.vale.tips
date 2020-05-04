@@ -9,7 +9,7 @@
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                 Category Name
             </label>
-            <input name="name" type="text" placeholder="Overwatch" class="appearance-none block w-full bg-gray-100 text-gray-700 border {{ $errors->has('name') ? 'border-red-500' : 'border-gray-500 ' }} rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+            <input name="name" type="text" placeholder="Overwatch" value="{{ old('name') }}" class="appearance-none block w-full bg-gray-100 text-gray-700 border {{ $errors->has('name') ? 'border-red-500' : 'border-gray-500 ' }} rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
             @if($errors->has('name'))
                 @foreach($errors->get('name') as $message)
                     <p class="text-red-500 text-xs italic">{{ $message }}</p>
