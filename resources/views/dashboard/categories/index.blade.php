@@ -7,7 +7,7 @@
 
 <div class="flex">
     @forelse($categories as $category)
-    <div class="flex-1 bg-white shadow-lg p-6 mx-3 w-auto rounded">
+    <div class="flex-1 bg-white shadow-md hover:shadow-xl p-6 mx-3 w-auto rounded">
         <a href="{{ route('dashboard.categories.show', ['category' => $category->id]) }}" class="text-3xl hover:text-blue-600">{{ $category->name }}</a>
         <p class="italic text-gray-600 ml-4 mb-6">
             {{ $category->descendants()->count() }} Tips
