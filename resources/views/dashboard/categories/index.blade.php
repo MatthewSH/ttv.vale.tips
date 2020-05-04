@@ -14,10 +14,6 @@
         </p>
         <a href="#" class="btn-sm btn-blue">New Tip</a>
     </div>
-
-    @if(!$loop->last)
-        <hr />
-    @endif
     @empty
     <p>No categories...yet.</p>
     @endforelse
