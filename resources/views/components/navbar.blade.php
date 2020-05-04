@@ -17,7 +17,7 @@
 
     <nav class="flex justify-between bg-white shadow-md px-64 py-3">
         <div class="flex-col">
-            <a href="#"><i class="fal fa-list mr-2"></i> Categories</a>
+            <a href="{{ route('dashboard.categories.index') }}"><i class="fal fa-list mr-2"></i> Categories</a>
         </div>
     </nav>
 </div>
