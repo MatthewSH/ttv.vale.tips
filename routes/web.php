@@ -24,4 +24,5 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::name('dashboard.')->namespace('Dashboard')->prefix('dash')->middleware(['auth', 'auth.author'])->group(function () {
     Route::get('/', 'DashboardController@index')->name('index');
     Route::resource('categories', 'CategoryController');
+    Route::resource('categories/{category}/tips', 'TipController')->except('index');
 });
