@@ -17,7 +17,7 @@ class CategoryController extends Controller
     public function index()
     {
         return view('dashboard.categories.index', [
-            'categories' => app('rinvex.categories.category')->all(),
+            'categories' => app('rinvex.categories.category')->get()->toTree(),
         ]);
     }
 
