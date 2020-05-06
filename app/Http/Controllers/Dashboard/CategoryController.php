@@ -66,6 +66,7 @@ class CategoryController extends Controller
     {
         return view('dashboard.categories.show', [
             'category' => $category,
+            'entries' => $category->entries(\App\Models\Tip::class)->get()
         ]);
     }
 
