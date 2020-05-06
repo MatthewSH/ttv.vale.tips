@@ -27,7 +27,7 @@
                 <select name="parent" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-3 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
                     <option value="0">-----</option>
                     @foreach($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    <option {{ ($parent == $category->id ? 'selected' : '') }} value="{{ $category->id }}">{{ $category->name }}</option>
                     @endforeach
                 </select>
                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">

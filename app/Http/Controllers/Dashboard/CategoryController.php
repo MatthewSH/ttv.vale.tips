@@ -24,12 +24,14 @@ class CategoryController extends Controller
     /**
      * Show the form for creating a new resource.
      *
+     * @param Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function create()
+    public function create(Request $request)
     {
         return view('dashboard.categories.create', [
             'categories' => app('rinvex.categories.category')->get()->toTree(),
+            'parent' => $request->get('parent', 0),
         ]);
     }
 
