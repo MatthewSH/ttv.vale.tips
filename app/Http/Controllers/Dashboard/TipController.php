@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateTip;
 use App\Models\Tip;
 use Illuminate\Http\Request;
+use Rinvex\Categories\Models\Category;
 
 class TipController extends Controller
 {
@@ -22,11 +23,14 @@ class TipController extends Controller
     /**
      * Show the form for creating a new resource.
      *
+     * @param Category $category
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function create()
+    public function create(Category $category)
     {
-        return view('dashboard.categories.tips.create');
+        return view('dashboard.categories.tips.create', [
+            'category' => $category
+        ]);
     }
 
     /**
