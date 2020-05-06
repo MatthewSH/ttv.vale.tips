@@ -39,7 +39,7 @@ class CategoryController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(CreateCategory $request)
     {
@@ -60,11 +60,13 @@ class CategoryController extends Controller
      * Display the specified resource.
      *
      * @param  \Rinvex\Categories\Models\Category  $category
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show(Category $category)
     {
-        return view('dashboard.categories.show', ['category' => $category]);
+        return view('dashboard.categories.show', [
+            'category' => $category,
+        ]);
     }
 
     /**
