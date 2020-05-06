@@ -1,7 +1,6 @@
 @extends('layouts.dashboard')
 
 @section('content')
-@section('content')
 <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" method="POST" action="{{ route('dashboard.tips.store', ['category' => $category]) }}">
     {{ method_field('POST') }}
     {{ csrf_field() }}
@@ -12,21 +11,36 @@
         <label class="block text-gray-700 text-sm font-bold mb-2" for="title">
             Title
         </label>
-        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="title" type="text" placeholder="My Tip Title">
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="title" type="text" placeholder="My Tip Title" value="{{ old('title') }}">
+        @if($errors->has('title'))
+            @foreach($errors->get('title') as $message)
+                <p class="text-red-500 text-xs italic">{{ $message }}</p>
+            @endforeach
+        @endif
     </div>
 
     <div class="mb-4">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="short">
-            Short version of your tip for chats
+            Short / Chat Tip
         </label>
-        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="short" type="text" placeholder="A short description of my tip.">
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="short" type="text" placeholder="Short version of your tip for chats." value="{{ old('short') }}">
+        @if($errors->has('short'))
+            @foreach($errors->get('short') as $message)
+                <p class="text-red-500 text-xs italic">{{ $message }}</p>
+            @endforeach
+        @endif
     </div>
 
     <div class="mb-4">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="long">
             Tip
         </label>
-        <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="long" type="text" rows="6" placeholder="This is the full on tip information. Markdown is allowed."></textarea>
+        <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="long" type="text" rows="6" placeholder="This is the full on tip information. Markdown is allowed.">{{ old('long') }}</textarea>
+        @if($errors->has('long'))
+            @foreach($errors->get('long') as $message)
+                <p class="text-red-500 text-xs italic">{{ $message }}</p>
+            @endforeach
+        @endif
     </div>
 
     <div class="mb-4">
@@ -37,6 +51,11 @@
             <option value="true">Published</option>
             <option value="false">Unpublished</option>
         </select>
+        @if($errors->has('visible'))
+            @foreach($errors->get('visible') as $message)
+                <p class="text-red-500 text-xs italic">{{ $message }}</p>
+            @endforeach
+        @endif
     </div>
 
     <button type="submit" class="btn-sm btn-blue">Create Tip</button>
