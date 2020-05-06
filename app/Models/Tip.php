@@ -11,6 +11,10 @@ class Tip extends Model
 
     protected $fillable = [
         'user_id', 'title', 'short',
-        'long'
+        'long', 'visible'
+    ];
+
+    protected $casts = [
+      'visible' => 'boolean'
     ];
 }

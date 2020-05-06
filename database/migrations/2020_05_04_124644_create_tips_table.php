@@ -19,6 +19,7 @@ class CreateTipsTable extends Migration
             $table->string('title');
             $table->text('short')->nullable()->default(null);
             $table->longText('long');
+            $table->boolean('visible')->default(true);
             $table->timestamps();
             $table->softDeletes();
 
