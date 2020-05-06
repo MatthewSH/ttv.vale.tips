@@ -27,9 +27,9 @@ class CreateTip extends FormRequest
     {
         return [
             'title' => 'required|min:1',
-            'short' => 'sometimes',
+            'short' => 'required',
             'long' => 'required|min:1',
-            'visible' => 'sometimes|boolean'
+            'visible' => 'required|boolean'
         ];
     }
 }
