@@ -26,8 +26,8 @@ class CreateCategory extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|min:4',
-            'parent' => 'optional|number|exists:categories,id'
+            'name' => 'required|string|min:1',
+            'parent' => 'required|numeric'
         ];
     }
 }
