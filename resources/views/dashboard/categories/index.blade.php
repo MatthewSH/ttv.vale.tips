@@ -21,7 +21,7 @@
         <hr class="my-3"/>
         @endif
         <p class="italic text-gray-600 ml-4 mb-6">
-            {{ $category->descendants()->count() }} Tips {{-- TODO: Fix this. This is the WRONG count() --}}
+            {{ $category->entries(\App\Models\Tip::class)->count() }} Tips
         </p>
         <a href="#" class="btn-sm btn-blue">New Tip</a>
     </div>
