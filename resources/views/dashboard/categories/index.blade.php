@@ -18,11 +18,7 @@
                 @endforeach
             </div>
         </div>
-        <hr class="my-3"/>
         @endif
-        <p class="italic text-gray-600 ml-4 mb-6">
-            {{ $category->entries(\App\Models\Tip::class)->count() }} Tips
-        </p>
     </div>
     @empty
     <p>No categories...yet.</p>
