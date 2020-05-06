@@ -6,7 +6,7 @@
 </div>
 
 <div class="grid grid-cols-3 gap-4">
-    @forelse($categories as $category)
+    @forelse(\Illuminate\Support\Arr::sort($categories, function($cat) { return $cat->name; }) as $category)
     <div class="bg-white shadow-md hover:shadow-xl p-6 mx-3 w-auto rounded">
         <a href="{{ route('dashboard.categories.show', ['category' => $category->id]) }}" class="text-3xl hover:text-blue-600">{{ $category->name }}</a>
         @if($category->descendants()->count() > 0)
