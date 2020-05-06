@@ -60,24 +60,38 @@ class TipController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Tip  $tip
-     * @return \Illuminate\Http\Response
+     * @param Category $category
+     * @param \App\Models\Tip $tip
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit(Tip $tip)
+    public function edit(Category $category, Tip $tip)
     {
-        //
+        return view('dashboard.categories.tips.edit', [
+           'category' => $category,
+           'tip' => $tip
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Tip  $tip
-     * @return \Illuminate\Http\Response
+     * @param CreateTip $request
+     * @param Category $category
+     * @param \App\Models\Tip $tip
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Tip $tip)
+    public function update(CreateTip $request, Category $category, Tip $tip)
     {
-        //
+        $tip->update([
+            'title' => $request->get('title'),
+            'short' => $request->get('short'),
+            'long' => $request->get('long'),
+            'visible' => $request->get('visible')
+        ]);
+
+        return redirect()->route('dashboard.categories.show', [
+            'category' => $category
+        ]);
     }
 
     /**
