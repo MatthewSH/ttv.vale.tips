@@ -36,23 +36,40 @@ class TipController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param CreateTip $request
+     * @param Category $category
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(CreateTip $request)
+    public function store(CreateTip $request, Category $category)
     {
-        //
+        $tip = Tip::create([
+            'title' => $request->get('title'),
+            'short' => $request->get('short'),
+            'long' => $request->get('long'),
+            'visible' => $request->get('visible'),
+            'user_id' => $request->session()->get('ttv_user')->id
+        ]);
+
+        $tip->attachCategories($category);
+
+        return redirect()->route('dashboard.tips.show', [
+            'category' => $category,
+            'tip' => $tip
+        ]);
     }
 
     /**
      * Display the specified resource.
      *
      * @param  \App\Models\Tip  $tip
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show(Tip $tip)
+    public function show(Category $category, Tip $tip)
     {
-        //
+        return view('dashboard.categories.tips.show', [
+            'category' => $category,
+            'tip' => $tip
+        ]);
     }
 
     /**
