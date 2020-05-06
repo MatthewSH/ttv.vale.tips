@@ -17,4 +17,9 @@ class Tip extends Model
     protected $casts = [
       'visible' => 'boolean'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
