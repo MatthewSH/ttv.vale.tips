@@ -41,9 +41,15 @@ class CategoryController extends Controller
      */
     public function store(CreateCategory $request)
     {
-        $category = app('rinvex.categories.category')->create([
+        $attributes = [
             'name' => $request->get('name')
-        ]);
+        ];
+
+        if ($request->get('parent') > 0) {
+            $category = app('rinvex.categories.category')->create($attributes, app('rinvex.categories.category')->where('id', $request->get('parent'))->firstOrFail());
+        } else {
+            $category = app('rinvex.categories.category')->create($attributes);
+        }
 
         return redirect()->route('dashboard.categories.show', ['category' => $category->id]);
     }
