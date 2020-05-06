@@ -28,7 +28,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('dashboard.categories.create');
+        return view('dashboard.categories.create', [
+            'categories' => app('rinvex.categories.category')->get()->toTree(),
+        ]);
     }
 
     /**
