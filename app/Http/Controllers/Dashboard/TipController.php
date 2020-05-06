@@ -52,23 +52,8 @@ class TipController extends Controller
 
         $tip->attachCategories($category);
 
-        return redirect()->route('dashboard.tips.show', [
-            'category' => $category,
-            'tip' => $tip
-        ]);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Tip  $tip
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function show(Category $category, Tip $tip)
-    {
-        return view('dashboard.categories.tips.show', [
-            'category' => $category,
-            'tip' => $tip
+        return redirect()->route('dashboard.categories.show', [
+            'category' => $category
         ]);
     }
 
