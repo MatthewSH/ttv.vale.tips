@@ -14,6 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::get('category', function() {
+    return app('rinvex.categories.category')->get()->toTree();
+});
+
+Route::get('category/{category}', function(\Rinvex\Categories\Models\Category $category) {
+    return [
+        'category' => $category,
+        'tips' => \App\Http\Resources\TipResource::collection($category->entries(\App\Models\Tip::class)->get())
+    ];
+});
+
+Route::get('tip/{tip}', function(\App\Models\Tip $tip) {
+    return new \App\Http\Resources\TipResource($tip);
 });
