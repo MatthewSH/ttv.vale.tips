@@ -26,8 +26,13 @@ Route::get('category/{category}', function(\Rinvex\Categories\Models\Category $c
 });
 
 Route::get('tip/{tip}', function(\App\Models\Tip $tip) {
+Route::get('tip/{tip}', function(Request $request, \App\Models\Tip $tip) {
     if (!$tip->visible) {
         return response()->json(['error' => 'Tip not found.'], 404);
+    }
+
+    if($request->has('key')) {
+        return $tip[$request->get('key')];
     }
 
     return new \App\Http\Resources\TipResource($tip);
