@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateCategory;
 use Illuminate\Http\Request;
-use Rinvex\Categories\Models\Category;
+use App\Models\Category;
 
 class CategoryController extends Controller
 {
