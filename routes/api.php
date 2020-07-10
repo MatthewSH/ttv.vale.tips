@@ -20,11 +20,15 @@ Route::get('category', function() {
 
 Route::get('category/{category}', function(\Rinvex\Categories\Models\Category $category) {
     return [
-        'category' => $category,
-        'tips' => \App\Http\Resources\TipResource::collection($category->entries(\App\Models\Tip::class)->get())
+        'category' => new \App\Http\Resources\CategoryResource($category),
+        'tips' => \App\Http\Resources\TipResource::collection($category->entries(\App\Models\Tip::class)->where('visible', true)->get())
     ];
 });
 
 Route::get('tip/{tip}', function(\App\Models\Tip $tip) {
+    if (!$tip->visible) {
+        return response()->json(['error' => 'Tip not found.'], 404);
+    }
+
     return new \App\Http\Resources\TipResource($tip);
 });
